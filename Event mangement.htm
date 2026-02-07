@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Management Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%232563eb' width='32' height='32' rx='4'/%3E%3Cpath fill='white' d='M8 10h16v2H8zm0 4h12v2H8zm0 4h14v2H8z'/%3E%3C/svg%3E">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        h1 {
+            color: #1e3a5f;
+            text-align: center;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            color: #475569;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+        /* Event Details Table */
+        .event-table {
+            width: 95%;
+            margin: 0 auto 40px;
+            border-collapse: collapse;
+            border: 2px solid #1e3a5f;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .event-table caption {
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 12px;
+            caption-side: top;
+            color: #1e3a5f;
+        }
+        .event-table th,
+        .event-table td {
+            border: 1px solid #64748b;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .event-table th {
+            background-color: #2563eb;
+            color: white;
+            font-weight: 600;
+        }
+        .event-table tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        .event-table col.event-name { width: 25%; }
+        .event-table col.coordinator { width: 20%; }
+        .event-table col.department { width: 18%; }
+        .event-table col.date { width: 15%; }
+        .event-table col.venue { width: 22%; }
+
+        /* Event Schedule Table */
+        .schedule-table {
+            width: 90%;
+            margin: 0 auto 40px;
+            border-collapse: collapse;
+            border: 2px solid #1e3a5f;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .schedule-table caption {
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 12px;
+            caption-side: top;
+            color: #1e3a5f;
+        }
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid #64748b;
+            padding: 10px 12px;
+        }
+        .schedule-table th {
+            background-color: #1e40af;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+        }
+        .schedule-table .time-header {
+            background-color: #3b82f6;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            width: 12%;
+        }
+        .schedule-table .tall-row {
+            height: 60px;
+        }
+        .schedule-table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Participant Summary Table */
+        .participant-table {
+            width: 85%;
+            margin: 0 auto 40px;
+            border-collapse: separate;
+            border-spacing: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .participant-table caption {
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 12px;
+            caption-side: top;
+            color: #1e3a5f;
+        }
+        .participant-table th,
+        .participant-table td {
+            border: 2px dashed #7c3aed;
+            padding: 12px 15px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .participant-table th {
+            background-color: #7c3aed;
+            color: white;
+            font-weight: 600;
+        }
+        .participant-table tr:nth-child(even) td {
+            background-color: #f5f3ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>College Event Management Dashboard</h1>
+        <p class="intro">
+            This dashboard provides a centralized view of all college events, their schedules, and participant information.
+            Effective event management is essential for colleges to foster campus culture, enhance student engagement,
+            and coordinate academic and extracurricular activities. It helps administration track registrations,
+            allocate resources, and ensure smooth execution of seminars, cultural fests, and technical competitions.
+        </p>
+    </header>
+
+    <main>
+        <!-- Event Details Table -->
+        <section>
+            <h2>Event Details</h2>
+            <table class="event-table">
+                <colgroup>
+                    <col class="event-name">
+                    <col class="coordinator">
+                    <col class="department">
+                    <col class="date">
+                    <col class="venue">
+                </colgroup>
+                <caption>List of upcoming and ongoing college events with coordinator and venue information</caption>
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Coordinator</th>
+                        <th>Department</th>
+                        <th>Event Date</th>
+                        <th>Venue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tech Fest 2025</td>
+                        <td>Prof. Rajesh Kumar</td>
+                        <td>Computer Science</td>
+                        <td>Feb 15, 2025</td>
+                        <td>Main Auditorium</td>
+                    </tr>
+                    <tr>
+                        <td>Annual Cultural Night</td>
+                        <td>Dr. Priya Sharma</td>
+                        <td>Arts & Culture</td>
+                        <td>Feb 22, 2025</td>
+                        <td>Open Ground</td>
+                    </tr>
+                    <tr>
+                        <td>Career Guidance Workshop</td>
+                        <td>Mr. Amit Patel</td>
+                        <td>Placement Cell</td>
+                        <td>Feb 18, 2025</td>
+                        <td>Seminar Hall A</td>
+                    </tr>
+                    <tr>
+                        <td>Sports Day</td>
+                        <td>Coach Suresh Nair</td>
+                        <td>Physical Education</td>
+                        <td>Mar 01, 2025</td>
+                        <td>Sports Complex</td>
+                    </tr>
+                    <tr>
+                        <td>Research Paper Presentation</td>
+                        <td>Dr. Anjali Mehta</td>
+                        <td>Research & Development</td>
+                        <td>Feb 25, 2025</td>
+                        <td>Conference Room</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Event Schedule Table -->
+        <section>
+            <h2>Weekly Event Schedule</h2>
+            <table class="schedule-table">
+                <caption>Daily time-wise schedule of events across the week (Mon–Fri)</caption>
+                <thead>
+                    <tr>
+                        <th class="time-header">Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="time-header">9:00 AM</th>
+                        <td>Assembly</td>
+                        <td>Assembly</td>
+                        <td rowspan="2">Tech Fest Inauguration</td>
+                        <td>Assembly</td>
+                        <td>Assembly</td>
+                    </tr>
+                    <tr>
+                        <th class="time-header">9:30 AM</th>
+                        <td>Classes</td>
+                        <td>Classes</td>
+                        <td>Classes</td>
+                        <td>Classes</td>
+                    </tr>
+                    <tr class="tall-row">
+                        <th class="time-header">11:00 AM</th>
+                        <td colspan="2">Common Break & Snacks</td>
+                        <td>Workshop Session</td>
+                        <td>Guest Lecture</td>
+                        <td>Lab Session</td>
+                    </tr>
+                    <tr>
+                        <th class="time-header">12:00 PM</th>
+                        <td>Classes</td>
+                        <td>Classes</td>
+                        <td>Classes</td>
+                        <td>Classes</td>
+                        <td>Classes</td>
+                    </tr>
+                    <tr>
+                        <th class="time-header">2:00 PM</th>
+                        <td>Cultural Practice</td>
+                        <td rowspan="2">Sports Training</td>
+                        <td>Club Meeting</td>
+                        <td>Placement Prep</td>
+                        <td>Project Review</td>
+                    </tr>
+                    <tr>
+                        <th class="time-header">3:00 PM</th>
+                        <td>Cultural Practice</td>
+                        <td>Club Meeting</td>
+                        <td>Placement Prep</td>
+                        <td>Project Review</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Participant Summary Table -->
+        <section>
+            <h2>Participant Summary</h2>
+            <table class="participant-table">
+                <caption>Event-wise participant count and registration status</caption>
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Number of Participants</th>
+                        <th>Registration Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tech Fest 2025</td>
+                        <td>450</td>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <td>Annual Cultural Night</td>
+                        <td>320</td>
+                        <td>Closed</td>
+                    </tr>
+                    <tr>
+                        <td>Career Guidance Workshop</td>
+                        <td>180</td>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <td>Sports Day</td>
+                        <td>520</td>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <td>Research Paper Presentation</td>
+                        <td>95</td>
+                        <td>Closed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer style="text-align: center; margin-top: 30px; color: #64748b; font-size: 0.9em;">
+        College Event Management Dashboard &bull; Administration Use Only
+    </footer>
+</body>
+</html>
